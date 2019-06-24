@@ -57,7 +57,7 @@ export default {
             });
 
          }else{
-           
+           localStorage.setItem("token", res.data.token);
            this.$router.push({name: "admin"});
          }
       });
@@ -70,7 +70,15 @@ export default {
             } 
             return form_data;
         }
-  }
+  },
+
+  mounted(){
+      var token = localStorage.getItem("token");
+
+      if (token) {
+        this.$router.push({name: "admin"});
+      }
+  },
 
 }
 
