@@ -47,7 +47,7 @@ export default {
       var formData = this.toFormData(this.user);
       this.$axios.post("http://localhost/ecommerce_vue/src/api/api.php?action=login", formData)
       .then(res=>{
-         console.log(res);
+         //console.log(res);
          this.$eventBus.$emit("loadingStatus", false);
          if (res.data.error) {
     
@@ -57,6 +57,12 @@ export default {
             });
 
          }else{
+
+              this.$iziToast.success({
+                title: 'Welcome!',
+                message: res.data.message,
+              });
+
            localStorage.setItem("token", res.data.token);
            this.$router.push({name: "admin"});
          }
@@ -74,7 +80,6 @@ export default {
 
   mounted(){
       var token = localStorage.getItem("token");
-
       if (token) {
         this.$router.push({name: "admin"});
       }

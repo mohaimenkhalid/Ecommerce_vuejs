@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import iziToast from 'izitoast'
+import Model from './components/others/Model'
 
 Vue.config.productionTip = false
 
@@ -13,6 +14,8 @@ Vue.prototype.$eventBus = eventBus;
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$iziToast = iziToast;
+
+Vue.component("model", Model);
 
 /* eslint-disable no-new */
 new Vue({

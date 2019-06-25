@@ -2,7 +2,7 @@
   <div class="admin">
     <div id="header">
         <h1 class="fleft">Simple E-commerce</h1>
-        <a href="" class="fright" @click="logoutNow()">Logout</a>
+        <a href="" title="Logout" class="fright" @click="logoutNow()">Logout</a>
     </div>
     <div id="sidebar">
 
@@ -45,6 +45,7 @@ export default {
 
   methods:{
       logoutNow(){
+
         localStorage.setItem("token", "");
         this.$router.push({name: "login"});
       }
