@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/pages/Login'
 import Admin from '@/components/pages/admin/Admin'
 import Category from '@/components/pages/admin/Category'
+import Supplier from '@/components/pages/admin/Supplier'
 
 Vue.use(Router)
 
@@ -32,6 +33,12 @@ export default new Router({
           path : 'category',
           name: 'admin.category',
           component: Category
+        },
+
+        {
+          path : 'supplier',
+          name: 'admin.supplier',
+          component: Supplier
         },
 
       ]

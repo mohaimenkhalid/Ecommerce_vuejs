@@ -10,23 +10,11 @@
 
 	$action= 'login';
 
-
  
 	if (isset($_GET['action'])) {
 		$action  = $_GET['action'];
 	}
 
-
-	if ($action == 'user') {
-		$result = $conn->query("SELECT * FROM `user` ");
-		$users = array();
-
-		while ($row = $result->fetch_assoc()) {
-			array_push($users, $row);
-		}
-
-		$res['users'] = $users;
-	}
 
 
 /*...........Login api...............*/
@@ -58,46 +46,6 @@
 			$res['message'] = "Incorrect username or password!!";
 		}
 	}
-
-
-	if ($action == 'update') {
- 			
-
-   			$username = $_POST['username'];
-   			$email = $_POST['email'];
-   			$mobile = $_POST['mobile'];
-   			$id = $_POST['id'];
-		
-
-		$result = $conn->query("UPDATE `users` SET `username` = '$username', `email` = '$email', `mobile` = '$mobile' WHERE `id` ='$id' ");
-		
-		if ($result) {
-			$res['message'] = "User updated successfully";
-		}else{
-			$res['error'] = true;
-			$res['message'] = "User could not updated";
-		}
-
-	}
-
-
-	if ($action == 'delete') {
- 			
-   			$id = $_POST['id'];
-
-		$result = $conn->query("DELETE FROM `users`  WHERE `id` ='$id' ");
-		
-		if ($result) {
-			$res['message'] = "User Deleted successfully";
-		}else{
-			$res['error'] = true;
-			$res['message'] = "User could not Deleted";
-		}
-
-	}
-
-
-
 
 
 

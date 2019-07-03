@@ -10,7 +10,7 @@
         <li><router-link to="/admin/category">Category</router-link></li>
         <li><router-link to="/admin/supplier">Supplier</router-link></li>
         <li><router-link to="/admin/product">Product</router-link></li>
-        <li><router-link to="/admin/sop">Shop</router-link></li>
+        <li><router-link to="/admin/shop">Shop</router-link></li>
       </ul>
       
     </div>

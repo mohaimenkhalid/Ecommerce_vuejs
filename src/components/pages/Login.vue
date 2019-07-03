@@ -45,7 +45,7 @@ export default {
       this.$eventBus.$emit("loadingStatus", true);
 
       var formData = this.toFormData(this.user);
-      this.$axios.post("http://localhost/ecommerce_vue/src/api/api.php?action=login", formData)
+      this.$axios.post("http://localhost/ecommerce_vue/src/api/login_api.php?action=login", formData)
       .then(res=>{
          //console.log(res);
          this.$eventBus.$emit("loadingStatus", false);

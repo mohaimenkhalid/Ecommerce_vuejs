@@ -1,10 +1,10 @@
 <template>
 	<transition name="scale">
-		<div class="modal" v-if="showingAddModal">
+		<div class="modal" v-if="showingModal">
 			<div class="modalContainer" >
 				<div class="modalHeader">
 					<p class="fleft"> {{ modalHeading }} </p>
-					<p class="fright modalClose" @click="$emit('modalClose' )">X </p>
+					<p class="fright modalClose" @click="$emit('modalClose' )">x </p>
 					<div class="clear"></div>
 				</div>
 				
@@ -26,7 +26,7 @@
 	export default {
 		name: "model",
 		computed:{
-			showingAddModal(){
+			showingModal(){
 				return this.cond;
 			}
 		},
