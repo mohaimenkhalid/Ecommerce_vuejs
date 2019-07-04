@@ -34,7 +34,7 @@
           <table >
             <tr>
               <td>Category Name</td>
-              <td><input type="text" id="newcatname" v-model="clickedcategory.name" placeholder="Category Name"></td>
+              <td><input type="text" id="newcatname" v-model="clickedcategory.sname" placeholder="Category Name"></td>
             </tr>
 
             <tr>
@@ -96,7 +96,7 @@
 
           <tr v-for="(category, i) in categories">
             <td> {{i+1}} </td>
-            <td> {{category.name}} </td>
+            <td> {{category.cname}} </td>
             <td>{{category.description}}</td>
             <td><button class="edit" @click="showingEditModal = true; clickedCategory(category)">Edit</button></td>
             <td><button class="delete" @click="showingDeleteModal = true; clickedCategory(category)">Delete</button></td>
@@ -132,7 +132,7 @@ export default {
 
     init(){
 
-      this.$eventBus.$emit("loadingStatus", true);
+     /* this.$eventBus.$emit("loadingStatus", true);*/
 
       this.$axios.get("http://localhost/ecommerce_vue/src/api/category_api.php?action=read")
       .then(res=>{

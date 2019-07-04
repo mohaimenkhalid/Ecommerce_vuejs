@@ -6,8 +6,8 @@
       <modal modalHeading="Add New Supplier" :cond="showingAddModal" @modalClose="showingAddModal = false">
           <table >
             <tr>
-              <td>Category Name</td>
-              <td><input type="text" id="newcatname" v-model="newsupplier.name"  placeholder="Category Name"></td>
+              <td>Supplier Name</td>
+              <td><input type="text" id="newcatname" v-model="newsupplier.name"  placeholder="Supplier Name"></td>
             </tr>
 
             <tr>
@@ -33,8 +33,8 @@
        <modal modalHeading="Update This Supplier" :cond="showingEditModal" @modalClose="showingEditModal = false">
           <table >
             <tr>
-              <td>Category Name</td>
-              <td><input type="text" id="newcatname" v-model="clickedsupplier.name"  placeholder="Category Name"></td>
+              <td>Supplier Name</td>
+              <td><input type="text" id="newcatname" v-model="clickedsupplier.sname"  placeholder="Supplier Name"></td>
             </tr>
 
             <tr>
@@ -57,7 +57,7 @@
 
       <!-- Delete Model -->
 
-      <modal modalHeading="Delete This Category" :cond="showingDeleteModal" @modalClose="showingDeleteModal = false">
+      <modal modalHeading="Delete This Supplier" :cond="showingDeleteModal" @modalClose="showingDeleteModal = false">
           <table >
         
           <tr>
@@ -69,7 +69,7 @@
             <tr>
               
               <td>
-                <button class="btnSave" @click="deleteCategory()" >Yes</button>
+                <button class="btnSave" @click="deleteSupplier()" >Yes</button>
                 <button class="btnClose" @click="showingDeleteModal = false" >No</button>
               </td>
               
@@ -97,7 +97,7 @@
 
           <tr v-for="(supplier, i) in suppliers">
             <td> {{ i+1 }} </td>
-            <td> {{ supplier.name }} </td>
+            <td> {{ supplier.sname }} </td>
             <td> {{ supplier.description }}</td>
             <td><button class="edit" @click= "showingEditModal = true; clickedSupplier(supplier);">Edit</button></td>
             <td><button class="delete" @click="showingDeleteModal = true;  clickedSupplier(supplier);" >Delete</button></td>
@@ -131,7 +131,7 @@ export default {
 
   	init(){
 
-  		 this.$eventBus.$emit("loadingStatus", true);
+  		 /*this.$eventBus.$emit("loadingStatus", true);*/
   		 this.$axios.get("http://localhost/ecommerce_vue/src/api/supplier_api.php?action=read")
   		 .then(res=>{
   		 	this.$eventBus.$emit("loadingStatus", false);
@@ -207,7 +207,7 @@ export default {
 
       },
 
-      deleteCategory(){
+      deleteSupplier(){
 
       	this.$eventBus.$emit("loadingStatus", true);
 

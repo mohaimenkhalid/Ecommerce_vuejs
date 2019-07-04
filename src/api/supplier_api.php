@@ -25,7 +25,7 @@
    			$name = $_POST['name'];
    			$description = $_POST['description'];
 
-		$result = $conn->query("INSERT INTO `supplier` (`name`, `description`) VALUES('$name', '$description') ");
+		$result = $conn->query("INSERT INTO `supplier` (`sname`, `description`) VALUES('$name', '$description') ");
 		
 		if ($result) {
 			$res['message'] = "Supplier added successfully";
@@ -56,7 +56,7 @@
    			$description = $_POST['description'];
    			$id = $_POST['id'];
 
-		$result = $conn->query("UPDATE `supplier` SET `name` = '$name', `description` = '$description' WHERE `id`= '$id' ");
+		$result = $conn->query("UPDATE `supplier` SET `sname` = '$name', `description` = '$description' WHERE `id`= '$id' ");
 		
 		if ($result) {
 			$res['message'] = "Supplier Updated successfully";

@@ -5,6 +5,7 @@ import Login from '@/components/pages/Login'
 import Admin from '@/components/pages/admin/Admin'
 import Category from '@/components/pages/admin/Category'
 import Supplier from '@/components/pages/admin/Supplier'
+import Product from '@/components/pages/admin/Product'
 
 Vue.use(Router)
 
@@ -39,6 +40,12 @@ export default new Router({
           path : 'supplier',
           name: 'admin.supplier',
           component: Supplier
+        },
+
+        {
+          path : 'product',
+          name: 'admin.product',
+          component: Product
         },
 
       ]

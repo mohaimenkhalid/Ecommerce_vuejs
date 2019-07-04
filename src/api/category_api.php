@@ -25,7 +25,7 @@
    			$name = $_POST['name'];
    			$description = $_POST['description'];
 
-		$result = $conn->query("INSERT INTO `category` (`name`, `description`) VALUES('$name', '$description') ");
+		$result = $conn->query("INSERT INTO `category` (`cname`, `description`) VALUES('$name', '$description') ");
 		
 		if ($result) {
 			$res['message'] = "Category added successfully";
@@ -56,7 +56,7 @@
    			$description = $_POST['description'];
    			$id = $_POST['id'];
 
-		$result = $conn->query("UPDATE `category` SET `name` = '$name', `description` = '$description' WHERE `id`= '$id' ");
+		$result = $conn->query("UPDATE `category` SET `cname` = '$name', `description` = '$description' WHERE `id`= '$id' ");
 		
 		if ($result) {
 			$res['message'] = "Category Updated successfully";
