@@ -7,7 +7,11 @@
           <table >
             <tr>
               <td>Category Name</td>
-              <td><input type="text" id="newcatname" v-model="newcategory.name" placeholder="Category Name"></td>
+              <td><input type="text" id="newcatname" v-model="newcategory.name" placeholder="Category Name">
+                <p style="color: red" v-if="catNameError">
+                  {{ catNameError }}
+                </p>
+              </td>
             </tr>
 
             <tr>
@@ -85,6 +89,8 @@
        <button class="fright addBtn" @click="showingAddModal = true">Add New</button>
       <div class="clear"></div>
       <hr>
+
+      
       <table class="nice-table" >
           <tr>
             <th>ID</th>
@@ -92,6 +98,13 @@
             <th>Description</th>
             <th>Edit</th>
             <th>Delete</th>
+          </tr>
+          <tr>
+            <td colspan="5">
+              <p class="txt-center" v-if="loadingCategory">
+              <img src="/static/img/loading.gif">
+      </p>
+            </td>
           </tr>
 
           <tr v-for="(category, i) in categories">
@@ -118,7 +131,9 @@ export default {
      showingDeleteModal: false,
      newcategory : { name: "", description: ""},
      clickedcategory: {},
-     categories: []
+     categories: [],
+     catNameError: "",
+     loadingCategory : true,
     }
   },
 
@@ -128,16 +143,26 @@ export default {
 
   },
 
+  watch:{
+        'newcategory.name': function(){
+          if (this.newcategory.name.length < 5) {
+            this.catNameError = "Category Name must be at least 5 characters long"
+          }else{
+            this.catNameError = "";
+          }
+        }
+  },
+
   methods:{
 
     init(){
 
-     /* this.$eventBus.$emit("loadingStatus", true);*/
+     this.loadingCategory = true;
 
       this.$axios.get("http://localhost/ecommerce_vue/src/api/category_api.php?action=read")
       .then(res=>{
          //console.log(res);
-         this.$eventBus.$emit("loadingStatus", false);
+         this.loadingCategory = false;
 
          if (res.data.error) {
     
@@ -150,6 +175,12 @@ export default {
 
             this.categories = res.data.category;
          }
+      }).catch(error=>{
+
+        if (error.response) {
+          //show error
+        }
+        
       });
 
     },

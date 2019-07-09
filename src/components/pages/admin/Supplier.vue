@@ -86,7 +86,11 @@
       <div class="clear"></div>
       <hr>
 
-      <table class="nice-table" >
+       <p class="txt-center" v-if="loadingSupplier">
+        <img src="/static/img/loading.gif">
+      </p>
+
+      <table class="nice-table" v-else>
           <tr>
             <th>ID</th>
             <th>Name</th>
@@ -120,7 +124,8 @@ export default {
      showingDeleteModal : false,
      newsupplier : { name : "", description : ""},
      clickedsupplier: {},
-     suppliers: []
+     suppliers: [],
+    loadingSupplier : true,
     }
   },
   mounted() {
@@ -131,10 +136,11 @@ export default {
 
   	init(){
 
-  		 /*this.$eventBus.$emit("loadingStatus", true);*/
+  		 this.loadingSupplier = true;
+
   		 this.$axios.get("http://localhost/ecommerce_vue/src/api/supplier_api.php?action=read")
   		 .then(res=>{
-  		 	this.$eventBus.$emit("loadingStatus", false);
+  		 	 this.loadingSupplier = false;
   		 			if (res.data.error) {
   		 				this.$iziToast.error({
                			title: 'Error',
@@ -149,7 +155,7 @@ export default {
 
     addNewSupplier(){
 
-      	this.$eventBus.$emit("loadingStatus", true);
+      	//this.$eventBus.$emit("loadingStatus", true);
       	var formData = this.toFormData(this.newsupplier);
 
       	this.$axios.post("http://localhost/ecommerce_vue/src/api/supplier_api.php?action=create", formData)

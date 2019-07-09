@@ -6,6 +6,7 @@ import router from './router'
 import axios from 'axios'
 import iziToast from 'izitoast'
 import Modal from './components/others/Modal'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -21,6 +22,7 @@ Vue.component("modal", Modal);
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

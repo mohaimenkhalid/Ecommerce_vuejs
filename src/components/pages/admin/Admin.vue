@@ -4,16 +4,8 @@
         <h1 class="fleft">Simple E-commerce</h1>
         <a href="" title="Logout" class="fright" @click="logoutNow()">Logout</a>
     </div>
-    <div id="sidebar">
-
-      <ul class="nav">
-        <li><router-link to="/admin/category">Category</router-link></li>
-        <li><router-link to="/admin/supplier">Supplier</router-link></li>
-        <li><router-link to="/admin/product">Product</router-link></li>
-        <li><router-link to="/admin/shop">Shop</router-link></li>
-      </ul>
-      
-    </div>
+  
+    <LeftSidebar></LeftSidebar>
 
     <div id="main">
         
@@ -26,6 +18,7 @@
 
 <script>
 
+import LeftSidebar from "../../others/LeftSidebar.vue";
 
 export default {
   name: 'Admin',
@@ -49,6 +42,10 @@ export default {
         localStorage.setItem("token", "");
         this.$router.push({name: "login"});
       }
+  },
+
+  components: {
+    LeftSidebar
   }
 
 }
